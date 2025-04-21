@@ -48,32 +48,6 @@
     <script>
 
       // Your JavaScript goes here
-      var randomNumber = Math.floor(Math.random() * 100) + 1;
-
-      var guesses = document.querySelector('.guesses')
-      var lastResult = document.querySelector('.lastResult')
-      var baixoOuAlto = document.querySelector('.lowOrHi')
-
-      var sendGuess = document.querySelector('.sendGuess')
-      var guessField = document.querySelector('.guessField')
-
-      var guessCount = 1;
-      var restartButtom;
-
-      function confferguess() {
-        var userGuess = Number(guessField.value);
-        if (guessCount === 1) {
-          guesses.textContent = 'Previous guesses:';
-        }
-      }
-      guesses.textContent += userGuess + " ";
-
-      if (userGuess === randomNumber) {
-        lastResult.textContent = "Parabéns! Você acertou!";
-        lastResult.style.backgroundColor = "green";
-        lowerOrHigher.textContent = "";
-        configFimDeJogo();
-      }
 
     </script>
   </body>
