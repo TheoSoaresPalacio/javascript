@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="pt-br">
   <head>
     <meta charset="utf-8">
 
@@ -73,7 +73,26 @@
         lastResult.style.backgroundColor = "green";
         lowerOrHigher.textContent = "";
         configFimDeJogo();
+      } else if (guessCount === 10) {
+        lastResult.textContent = "!!!FIM DE JOGO!!!";
+        lowerOrHigher.textContent = "";
+        configFimDeJogo();
+      } else {
+        lastResult.textContent = "Errado!";
+        lastResult.style.backgroundColor = "red";
+        if (userGuess < randomNumber) {
+          lowerOrHigher.textContent = "Seu palpite foi muito baixo!";
+        } else if (userGuess > randomNumber) {
+          lowerOrHigher.textContent = "Seu palpite foi muito alto!"
+          }
+        }
+
+        guessCount++;
+        guessField.value = "";
+        guessField.focus();
       }
+      
+      
 
     </script>
   </body>
