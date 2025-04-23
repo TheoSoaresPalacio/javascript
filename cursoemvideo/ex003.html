@@ -25,8 +25,10 @@
     <h1>Olá, Mundo!</h1>
     <p>Livre da maldição</p>
     <script>
-        var nome = window.prompt("Qual é seu nome!");
-        window.alert("É um grande prazer em te conhecer," + nome + '!');
+        var n1 = Number.parseInt(window.prompt('Digite um número:'))
+        var n2 = Number.parseInt(window.prompt('Digite outro número:'))
+        var s = n1 + n2
+        window.alert('A soma dos valores é ' + s) // o + concatena os valores, não soma
     </script>
 </body>
 </html>
