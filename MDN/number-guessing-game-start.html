@@ -46,44 +46,41 @@
     </div>
 
     <script>
-
-      // Your JavaScript goes here
       var randomNumber = Math.floor(Math.random() * 100) + 1;
 
-      var guesses = document.querySelector('.guesses')
-      var lastResult = document.querySelector('.lastResult')
-      var baixoOuAlto = document.querySelector('.lowOrHi')
+      var guesses = document.querySelector('.guesses');
+      var lastResult = document.querySelector('.lastResult');
+      var baixoOuAlto = document.querySelector('.lowOrHi');
 
-      var sendGuess = document.querySelector('.sendGuess')
-      var guessField = document.querySelector('.guessField')
+      var guessSubmit = document.querySelector('.guessSubmit');
+      var guessField = document.querySelector('.guessField');
 
       var guessCount = 1;
-      var restartButtom;
+      var restartButton;
 
-      function confferguess() {
+      function conferePalpite() {
         var userGuess = Number(guessField.value);
         if (guessCount === 1) {
-          guesses.textContent = 'Previous guesses:';
+          guesses.textContent = 'Palpites anteriores: ';
         }
-      }
-      guesses.textContent += userGuess + " ";
+        guesses.textContent += userGuess + " ";
 
-      if (userGuess === randomNumber) {
-        lastResult.textContent = "Parabéns! Você acertou!";
-        lastResult.style.backgroundColor = "green";
-        lowerOrHigher.textContent = "";
-        configFimDeJogo();
-      } else if (guessCount === 10) {
-        lastResult.textContent = "!!!FIM DE JOGO!!!";
-        lowerOrHigher.textContent = "";
-        configFimDeJogo();
-      } else {
-        lastResult.textContent = "Errado!";
-        lastResult.style.backgroundColor = "red";
-        if (userGuess < randomNumber) {
-          lowerOrHigher.textContent = "Seu palpite foi muito baixo!";
-        } else if (userGuess > randomNumber) {
-          lowerOrHigher.textContent = "Seu palpite foi muito alto!"
+        if (userGuess === randomNumber) {
+          lastResult.textContent = "Parabéns! Você acertou!";
+          lastResult.style.backgroundColor = "green";
+          baixoOuAlto.textContent = "";
+          configFimDeJogo();
+        } else if (guessCount === 10) {
+          lastResult.textContent = "!!!FIM DE JOGO!!!";
+          baixoOuAlto.textContent = "";
+          configFimDeJogo();
+        } else {
+          lastResult.textContent = "Errado!";
+          lastResult.style.backgroundColor = "red";
+          if (userGuess < randomNumber) {
+            baixoOuAlto.textContent = "Seu palpite foi muito baixo!";
+          } else if (userGuess > randomNumber) {
+            baixoOuAlto.textContent = "Seu palpite foi muito alto!";
           }
         }
 
@@ -91,9 +88,37 @@
         guessField.value = "";
         guessField.focus();
       }
-      
-      
 
+      function configFimDeJogo() {
+        guessField.disabled = true;
+        guessSubmit.disabled = true;
+        restartButton = document.createElement('button');
+        restartButton.textContent = 'Iniciar novo jogo';
+        document.body.appendChild(restartButton);
+        restartButton.addEventListener('click', reiniciarJogo);
+      }
+
+      function reiniciarJogo() {
+        guessCount = 1;
+
+        var resetParas = document.querySelectorAll('.resultParas p');
+        for (var i = 0; i < resetParas.length; i++) {
+          resetParas[i].textContent = '';
+        }
+
+        restartButton.parentNode.removeChild(restartButton);
+
+        guessField.disabled = false;
+        guessSubmit.disabled = false;
+        guessField.value = '';
+        guessField.focus();
+
+        lastResult.style.backgroundColor = 'white';
+
+        randomNumber = Math.floor(Math.random() * 100) + 1;
+      }
+
+      guessSubmit.addEventListener('click', conferePalpite);
     </script>
   </body>
 </html>
