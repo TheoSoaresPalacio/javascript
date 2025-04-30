@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Somando Números</title>
+    <style>
+        body {
+            background-color: aquamarine;
+            font: normal 13px Arial, sans-serif;
+        }
+        input {
+            font: normal 15px Arial, sans-serif;
+            width: 200px;
+        }
+        div#res {
+            color: black;
+            margin-top: 20px;
+            font: normal 30px Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h1>Somando Valores</h1>
+    <label for="txtn1">Número 1:</label>
+    <input type="number" name="txtn1" id="txtn1"> +
+    <label for="txtn2">Número 2:</label>
+    <input type="number" name="txtn2" id="txtn2">
+    <input type="button" value="Somar" onclick="somar()">
+    <div id="res"></div>
+    <script>
+        function somar() {
+            var txtn1 = document.getElementById('txtn1');
+            var txtn2 = document.getElementById('txtn2');
+            var res = document.getElementById('res');
+            var n1 = Number(txtn1.value);
+            var n2 = Number(txtn2.value);
+
+            if (isNaN(n1) || isNaN(n2)) {
+                res.innerHTML = 'Por favor, insira números válidos.';
+            } else {
+                var s = n1 + n2;
+                res.innerHTML = `A soma entre ${n1} e ${n2} é igual a ${s}`;
+            }
+        }
+    </script>
+</body>
+</html>
