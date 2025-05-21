@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarefa de variáveis 1</title>
+    <style>
+      p {
+        color: purple;
+        margin: 0.5em 0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+    </style>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+
+  <body>
+    <section class="preview"></section>
+
+    <script>
+      let myName = "Theo";
+      let myAge = 18;
+
+      const section = document.querySelector('section');
+
+      const para1 = document.createElement('p');
+      para1.textContent = `Nome: ${myName}`;
+      const para2 = document.createElement('p');
+      para2.textContent = `Idade: ${myAge}`;
+      section.appendChild(para1);
+      section.appendChild(para2);
+    </script>
+  </body>
+</html>
